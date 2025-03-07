@@ -3,6 +3,21 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@env/*": [
+        "src/environment/*"
+      ],
+      "@common/*": [
+        "src/app/common/*"
+      ],
+      "@core/*": [
+        "src/app/core/*"
+      ],
+      "@root/*": [
+        "src/app/root/*"
+      ]
+    },
     "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": true,

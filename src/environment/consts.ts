@@ -1,0 +1,1 @@
+export const DEFAULT_PAGINATION_PER_PAGE = 10;
