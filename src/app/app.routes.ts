@@ -1,9 +1,17 @@
 import { Routes } from '@angular/router';
+import { appGuard, authGuard } from '@core/guards';
 
 export const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'login' },
-  { path: 'login', loadChildren: () => import('./features/auth/routes').then(m => m.routes) },
+  { path: '', pathMatch: 'full', redirectTo: 'facts' },
   {
-    path: 'auth', loadChildren: () => import('./features/auth/routes').then(m => m.routes)
+    path: 'facts',
+    canActivate: [authGuard],
+    loadChildren: () => import('./features/facts/routes').then(m => m.routes)
+  },
+  {
+    path: 'auth', canActivate: [appGuard], loadChildren: () => import('./features/auth/routes').then(m => m.routes)
+  },
+  {
+    path: '**', redirectTo: 'login'
   }
 ];
