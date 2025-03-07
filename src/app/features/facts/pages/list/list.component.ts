@@ -31,7 +31,6 @@ import { ProgressSpinner } from 'primeng/progressspinner';
   ],
   standalone: true,
   templateUrl: './list.component.html',
-  styleUrl: './list.component.scss'
 })
 export class FactsListComponent implements OnInit, AfterViewInit {
   @ViewChild('scrollContainer') scrollContainer!: ElementRef;
@@ -53,18 +52,18 @@ export class FactsListComponent implements OnInit, AfterViewInit {
     return this.loadMoreAttempt === this.maxLoadMoreAttempts;
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.scrollContainer.nativeElement.addEventListener('scroll', () => this.onScroll());
   }
 
-  onScroll() {
+  onScroll(): void {
     const container = this.scrollContainer.nativeElement;
     if (container.scrollTop + container.clientHeight >= container.scrollHeight - 10) {
       this.tryLoadMore$$.next(true);
     }
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.tryLoadMore$$.next(true);
     this.factsList$.pipe(
       filter(facts => !!facts?.data?.length),
@@ -84,7 +83,7 @@ export class FactsListComponent implements OnInit, AfterViewInit {
     });
   }
 
-  loadMore() {
+  loadMore(): void {
     if (!this.maxAttemptsAchieved()) {
       this.store.dispatch(factsListAction({
         params: {
@@ -106,7 +105,7 @@ export class FactsListComponent implements OnInit, AfterViewInit {
     }
   }
 
-  logout() {
+  logout(): void {
     this.store.dispatch(authLogoutAction());
   }
 

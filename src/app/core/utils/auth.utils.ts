@@ -10,11 +10,11 @@ export class AuthUtils {
     return localStorage.getItem('access_token');
   }
 
-  removeToken() {
+  removeToken(): void {
     localStorage.removeItem('access_token');
   }
 
-  isTokenValid() {
+  isTokenValid(): boolean {
     const token = this.accessToken;
     if (!token) {
       return false;
@@ -34,11 +34,11 @@ export class AuthUtils {
     return true;
   }
 
-  isTokenNotValid() {
+  isTokenNotValid(): boolean {
     return !this.isTokenValid();
   }
 
-  logout() {
+  logout(): void {
     this.removeToken();
   }
 }

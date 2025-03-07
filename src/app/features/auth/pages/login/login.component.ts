@@ -23,8 +23,7 @@ import { AuthStoreModule } from '@core/state/features/auth/store.module';
   ],
   providers: [AuthLoginFormBuilder],
   standalone: true,
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  templateUrl: './login.component.html'
 })
 export class LoginComponent {
   private readonly store = inject(Store);
@@ -33,7 +32,7 @@ export class LoginComponent {
   loginLoadingState$ = this.store.select(selectAuthLoginLoadingState);
   loginErrorState$ = this.store.select(selectAuthLoginErrorState);
 
-  submit() {
+  submit(): void {
     this.store.dispatch(authLoginAction({
       payload: this.form.getRawValue()
     }));

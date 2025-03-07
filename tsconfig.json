@@ -8,9 +8,6 @@
       "@env/*": [
         "src/environment/*"
       ],
-      "@common/*": [
-        "src/app/common/*"
-      ],
       "@core/*": [
         "src/app/core/*"
       ],
